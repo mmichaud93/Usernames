@@ -1,29 +1,20 @@
 package com.io.usernames;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
-import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.io.usernames.models.UsernameModel;
-import com.io.usernames.util.UsernameLog;
 
 import java.util.List;
-import java.util.Random;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -38,7 +29,6 @@ public class UsernamesAdapter extends PagerAdapter {
     Context context;
     private int resource;
     private List<UsernameModel> items;
-    private UsernameViewHolder viewHolder;
 
     public UsernamesAdapter(Context context, int resource, List<UsernameModel> items) {
         this.context = context;
@@ -208,15 +198,5 @@ public class UsernamesAdapter extends PagerAdapter {
 
     public UsernameModel getUsername(int i) {
         return items.get(i);
-    }
-
-    static class UsernameViewHolder {
-        @InjectView(R.id.text_username)
-        TextView username;
-
-        public UsernameViewHolder(View view) {
-            ButterKnife.inject(this, view);
-        }
-
     }
 }
