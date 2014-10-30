@@ -86,6 +86,7 @@ public class UsernamesFragment extends Fragment {
         tryAnother.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                UsernamesActivity.tagEvent(UsernamesActivity.TRY_ANOTHER_EVENT);
                 if(usernames.size()==1 && usernames.get(0)==null) {
                     if(loading.getVisibility()==View.GONE) {
                         loading.setVisibility(View.VISIBLE);
@@ -132,6 +133,7 @@ public class UsernamesFragment extends Fragment {
                 return;
             }
             if(usernameModel!=null) {
+                UsernamesActivity.tagEvent(UsernamesActivity.USERNAME_EVENT);
                 usernameAdapter.addUsername(usernameModel);
                 if(usernameAdapter.getCount()<2) {
                     getUsername();
