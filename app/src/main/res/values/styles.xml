@@ -1,0 +1,34 @@
+<resources>
+
+    <style name="FrameworkRoot.Theme" parent="Theme.AppCompat.Light" />
+    <style name="FrameworkRoot.Widget" parent="Theme.AppCompat" />
+
+    <style name="Theme" parent="FrameworkRoot.Theme">
+    </style>
+
+    <style name="Theme.Usernames.Base" parent="Theme">
+
+        <item name="colorPrimary">@color/app_primary</item>
+        <item name="colorPrimaryDark">@color/app_primary_dark</item>
+        <item name="colorAccent">@color/app_accent</item>
+
+        <item name="android:textColorLink">@color/app_accent</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/white</item>
+
+    </style>
+
+    <style name="Theme.Usernames" parent="Theme.Usernames.Base" />
+
+    <style name="ActionBarThemeOverlay" parent="">
+        <item name="android:textColorPrimary">@color/app_accent</item>
+        <item name="colorControlNormal">@color/app_accent</item>
+        <item name="colorControlHighlight">#3fff</item>
+    </style>
+    <style name="ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Usernames</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="how_about">How about</string>
+    <string name="try_another">Try Another</string>
+    <string name="network_error">Whoops, couldn\'t get a Username</string>
+</resources>
