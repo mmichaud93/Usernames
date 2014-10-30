@@ -4,6 +4,9 @@ import android.content.Context;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
+import com.io.usernames.UsernamesActivity;
+import com.io.usernames.util.UsernameLog;
+
 public class ScrollerCustomDuration extends Scroller {
 
     private double mScrollFactor = 4;
@@ -31,6 +34,11 @@ public class ScrollerCustomDuration extends Scroller {
     @Override
     public void startScroll(int startX, int startY, int dx, int dy, int duration) {
         super.startScroll(startX, startY, dx, dy, (int) (duration * mScrollFactor));
+        if(dx<0) {
+            UsernamesActivity.tagEvent(UsernamesActivity.SWIPE_RIGHT_EVENT);
+        } else if(dx>0) {
+            UsernamesActivity.tagEvent(UsernamesActivity.SWIPE_LEFT_EVENT);
+        }
     }
 
 }
