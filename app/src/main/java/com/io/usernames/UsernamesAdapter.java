@@ -2,10 +2,13 @@ package com.io.usernames;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +59,7 @@ public class UsernamesAdapter extends PagerAdapter {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View root=null;
-        UsernameModel item = items.get(position);
+        final UsernameModel item = items.get(position);
         if(item!=null) {
             root = inflater.inflate(resource, container, false);
             TextView textView = (TextView) root.findViewById(R.id.text_username);
@@ -70,6 +73,12 @@ public class UsernamesAdapter extends PagerAdapter {
             SpannableString urlContent = new SpannableString(item.getUsername()+".com");
             urlContent.setSpan(new UnderlineSpan(), 0, urlContent.length(), 0);
             urlText.setText(urlContent);
+            urlText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    launchLink(v, "http://www.namecheap.com/?aff=72210");
+                }
+            });
 
             if(item.getResults().get(0).isAvailable()) {
                 urlStatus.setImageResource(R.drawable.ic_check);
@@ -85,6 +94,12 @@ public class UsernamesAdapter extends PagerAdapter {
             SpannableString facebookContent = new SpannableString("facebook.com/"+item.getUsername());
             facebookContent.setSpan(new UnderlineSpan(), 0, facebookContent.length(), 0);
             facebookText.setText(facebookContent);
+            facebookText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    launchLink(v, "https://facebook.com/username");
+                }
+            });
 
             if(item.getResults().get(0).isAvailable()) {
                 facebookStatus.setImageResource(R.drawable.ic_check);
@@ -100,6 +115,12 @@ public class UsernamesAdapter extends PagerAdapter {
             SpannableString twitterContent = new SpannableString("twitter.com/"+item.getUsername());
             twitterContent.setSpan(new UnderlineSpan(), 0, twitterContent.length(), 0);
             twitterText.setText(twitterContent);
+            twitterText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    launchLink(v, "https://twitter.com/signup");
+                }
+            });
 
             if(item.getResults().get(0).isAvailable()) {
                 twitterStatus.setImageResource(R.drawable.ic_check);
@@ -115,6 +136,12 @@ public class UsernamesAdapter extends PagerAdapter {
             SpannableString githubContent = new SpannableString("github.com/"+item.getUsername());
             githubContent.setSpan(new UnderlineSpan(), 0, githubContent.length(), 0);
             githubText.setText(githubContent);
+            githubText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    launchLink(v, "https://github.com/join");
+                }
+            });
 
             if(item.getResults().get(0).isAvailable()) {
                 githubStatus.setImageResource(R.drawable.ic_check);
@@ -130,6 +157,12 @@ public class UsernamesAdapter extends PagerAdapter {
             SpannableString linkedinContent = new SpannableString("linkedin.com/"+item.getUsername());
             linkedinContent.setSpan(new UnderlineSpan(), 0, linkedinContent.length(), 0);
             linkedinText.setText(linkedinContent);
+            linkedinText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    launchLink(v, "http://www.linkedin.com/profile/public-profile-settings");
+                }
+            });
 
             if(item.getResults().get(0).isAvailable()) {
                 linkedinStatus.setImageResource(R.drawable.ic_check);
@@ -155,6 +188,12 @@ public class UsernamesAdapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view==object;
+    }
+
+    public void launchLink(View view, String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        view.getContext().startActivity(intent);
     }
 
     public void addUsername(UsernameModel usernameModel) {
