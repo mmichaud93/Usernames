@@ -66,7 +66,6 @@ public class UsernamesAdapter extends PagerAdapter {
             urlText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    UsernamesActivity.tagEvent(UsernamesActivity.URL_EVENT);
                     launchLink(v, "http://www.namecheap.com/?aff=72210");
                 }
             });
@@ -88,7 +87,6 @@ public class UsernamesAdapter extends PagerAdapter {
             facebookText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    UsernamesActivity.tagEvent(UsernamesActivity.FACEBOOK_EVENT);
                     launchLink(v, "https://facebook.com/username");
                 }
             });
@@ -110,7 +108,6 @@ public class UsernamesAdapter extends PagerAdapter {
             twitterText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    UsernamesActivity.tagEvent(UsernamesActivity.TWITTER_EVENT);
                     launchLink(v, "https://twitter.com/signup");
                 }
             });
@@ -132,7 +129,6 @@ public class UsernamesAdapter extends PagerAdapter {
             githubText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    UsernamesActivity.tagEvent(UsernamesActivity.GITHUB_EVENT);
                     launchLink(v, "https://github.com/join");
                 }
             });
@@ -154,7 +150,6 @@ public class UsernamesAdapter extends PagerAdapter {
             linkedinText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    UsernamesActivity.tagEvent(UsernamesActivity.LINKEDIN_EVENT);
                     launchLink(v, "http://www.linkedin.com/profile/public-profile-settings");
                 }
             });

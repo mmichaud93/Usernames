@@ -7,8 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.localytics.android.LocalyticsActivityLifecycleCallbacks;
-import com.localytics.android.LocalyticsSession;
+import com.google.android.gms.analytics.GoogleAnalytics;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 
@@ -29,19 +28,13 @@ public class UsernamesActivity extends ActionBarActivity {
     public static String SWIPE_LEFT_EVENT = "Swiped Left";
     public static String SWIPE_RIGHT_EVENT = "Swiped Right";
 
-    static LocalyticsSession localyticsSession;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ((UsernamesApplication) getApplication()).getTracker(UsernamesApplication.TrackerName.APP_TRACKER);
+
         setContentView(R.layout.activity_usernames);
-
-        // Instantiate the object
-        localyticsSession = new LocalyticsSession(this);  // Context used to access device resources
-
-        // Register LocalyticsActivityLifecycleCallbacks
-        getApplication().registerActivityLifecycleCallbacks(
-                new LocalyticsActivityLifecycleCallbacks(localyticsSession));
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
@@ -59,15 +52,20 @@ public class UsernamesActivity extends ActionBarActivity {
         }
     }
 
-    public static void tagEvent(String event) {
-        if(localyticsSession!=null) {
-            //localyticsSession.tagEvent(event);
-        }
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
         Crouton.cancelAllCroutons();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 }

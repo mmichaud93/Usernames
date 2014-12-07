@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ga_debug">false</string>
+
+    <!-- The screen names that will appear in reports -->
+    <screenName name="com.io.usernames.UsernamesActivity">
+        HubwayActivity
+    </screenName>
+</resources>

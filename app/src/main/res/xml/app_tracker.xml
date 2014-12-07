@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ga_trackingId">UA-50420831-4</string>
+    <bool name="ga_autoActivityTracking">true</bool>
+    <integer name="ga_sessionTimeout">300</integer>
+
+    <!-- The screen names that will appear in reports -->
+    <screenName name="com.io.usernames.UsernamesActivity">
+        HubwayActivity
+    </screenName>
+</resources>
